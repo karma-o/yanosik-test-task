@@ -1,5 +1,6 @@
 package org.yanosik.test.task.common.service.mapper;
 
+import org.json.JSONObject;
 import org.yanosik.test.task.common.model.dto.request.UserRequestDto;
 
 /**
@@ -16,7 +17,7 @@ public interface RequestDtoMapper<M, R> {
      * @param model model
      * @return request DTO
      */
-    R modelToRequestDto(M model);
+    R toRequestDto(M model);
 
     /**
      * Converts
@@ -24,5 +25,5 @@ public interface RequestDtoMapper<M, R> {
      * @param json formatted string
      * @return request DTO
      */
-    UserRequestDto jsonToRequestDto(String json);
+    UserRequestDto toRequestDto(JSONObject json);
 }

@@ -27,6 +27,9 @@ import org.yanosik.test.task.server.util.ConnectionUtil;
  *   - there must be no partial dependencies. Every field must be related to its PK
  *     (originally, user_login was FK in the Vehicle table, which is not acceptable).
  *   - there should be no transitive dependencies.
+ *   - Also using a 3rd table such as vehicle_user
+ *     (contains only FK of ids and information about relations)
+ *     would be a great idea, and will make our work easier next time.
  * So, I have implemented part of this structure in the database + minor improvement,
  * such as soft delete in case something goes wrong.
  *
@@ -85,6 +88,7 @@ public class UserDaoImpl implements UserDao {
             throw new DataProcessingException("Couldn't get user by id " + id, e);
         }
         if (user != null) {
+            System.out.println("User with id = " + user.getId() + " was found in database");
             user.setVehicles(
                     vehicleService.getByUserId(
                             user.getId()));

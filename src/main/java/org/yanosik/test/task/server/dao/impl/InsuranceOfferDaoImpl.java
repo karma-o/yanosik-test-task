@@ -29,6 +29,7 @@ public class InsuranceOfferDaoImpl implements InsuranceOfferDao {
         } catch (SQLException e) {
             throw new DataProcessingException("Couldn't get insuranceOffers of vehicleId " + id, e);
         }
+        System.out.println("Setting insurance for vehicle with id = " + id);
         return insuranceOffers;
     }
 

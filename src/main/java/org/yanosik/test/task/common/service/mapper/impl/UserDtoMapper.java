@@ -8,19 +8,20 @@ import org.yanosik.test.task.common.service.mapper.RequestDtoMapper;
 public class UserDtoMapper implements RequestDtoMapper<User, UserRequestDto> {
 
     @Override
-    public UserRequestDto modelToRequestDto(User user) {
+    public UserRequestDto toRequestDto(User user) {
         UserRequestDto userRequestDto = new UserRequestDto();
         userRequestDto.setId(user.getId());
         userRequestDto.setPassword(user.getPassword());
         return userRequestDto;
     }
 
-    public UserRequestDto jsonToRequestDto(String json) {
-        // {d"userIdd":1, "userPassword":"qwerty123"}
+    public UserRequestDto toRequestDto(JSONObject json) {
+        System.out.println("Request received: " + json.toString());
+        System.out.println("Mapping request to DTO... ");
+        // json example: {"id":1, "password":"qwerty123"}
         UserRequestDto userRequestDto = new UserRequestDto();
-        JSONObject jsonObject = new JSONObject(json);
-        userRequestDto.setId((Long) jsonObject.get("userId"));
-        userRequestDto.setPassword((String) jsonObject.get("password"));
+        userRequestDto.setId(json.getLong("id"));
+        userRequestDto.setPassword(json.getString("password"));
         return userRequestDto;
     }
 }

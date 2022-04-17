@@ -36,6 +36,7 @@ public class VehicleDaoImpl implements VehicleDao {
         } catch (SQLException e) {
             throw new DataProcessingException("Couldn't get vehicles of userId " + id, e);
         }
+        System.out.println("Setting vehicles for user with id = " + id);
         vehicles.forEach(
                 vehicle -> vehicle.setInsuranceOffers(
                         insuranceOfferService.getByVehicleId(

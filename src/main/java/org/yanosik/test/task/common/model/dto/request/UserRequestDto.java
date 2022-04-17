@@ -19,4 +19,13 @@ public class UserRequestDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    //this method shows password only for demonstrating purposes
+    @Override
+    public String toString() {
+        return "UserRequestDto{"
+                + "id=" + id
+                + ", password='" + password + '\''
+                + '}';
+    }
 }
