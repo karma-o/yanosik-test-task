@@ -55,6 +55,7 @@ public class ServerApp {
                 userRequestDto.getId(),
                 userRequestDto.getPassword()
         );
+
         System.out.println("Mapping users vehicles to response DTOs...");
         System.out.println("Mapping vehicle response DTOs to JSON...");
         List<JSONObject> jsonVehicles = user.getVehicles()
@@ -62,9 +63,11 @@ public class ServerApp {
                 .map(vehicleDtoMapper::toResponseDto)
                 .map(vehicleDtoMapper::toJson)
                 .collect(Collectors.toList());
+
         System.out.println("Composing a single JSONObject response...");
         String responseMessage = new JSONObject().put(
                 "vehicles", new JSONArray(jsonVehicles)).toString();
+
         System.out.println("Sending response to client...");
         out.println(responseMessage);
     }
@@ -99,7 +102,7 @@ public class ServerApp {
         try {
             server.start(6666);
         } catch (IOException e) {
-            throw new RuntimeException("Couldn't start a server socket", e);
+            throw new RuntimeException("Couldn't start a server", e);
         }
     }
 }
