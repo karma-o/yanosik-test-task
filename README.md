@@ -14,9 +14,11 @@ You can see the workflow of the user request in the console when you run the app
 ## How to run
 
 ---
-To set the server online, you have to run the main method in the `UserRequestListener` class (`src/main/java/org/yanosik/test/task/server/UserRequestListener.java`).
+1. Run the SQL script to set up the database with mock data;
 
-After that you can run the client, which was implemented through the test class (`src/test/java/org/yanosik/test/task/Client.java`) to have it all in one convenient place
+2. To set the server online, you have to run the main method in the `UserRequestListener` class (`src/main/java/org/yanosik/test/task/server/UserRequestListener.java`);
+
+3. After that you can run the client, which was implemented through the test class (`src/test/java/org/yanosik/test/task/Client.java`) to have it all in one convenient place.
 
 ---
 ## Modifications and implemented features
