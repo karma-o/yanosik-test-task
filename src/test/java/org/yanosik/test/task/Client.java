@@ -19,7 +19,7 @@ import org.yanosik.test.task.common.service.mapper.impl.VehicleDtoMapper;
  */
 public class Client {
     public static final Long MOCK_ID = 1L;
-    public static final String MOCK_PASSWORD = "1234";
+    public static final String MOCK_PASSWORD = "bestProgrammer";
 
     public static final String SERVER_IP = "127.0.0.1";
     public static final int SERVER_PORT = 6666;
