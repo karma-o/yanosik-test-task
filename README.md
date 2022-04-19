@@ -1,19 +1,19 @@
 # yanosik-test-task
 
----
 main functionality was implemented according to the task description (`task_description/Task_PL.png`).
+
+You can see the workflow of the user request in the console when you run the app.
+
+I used MySQL for this task.
 
 Used dependencies:
 * Spring context for more convenient dependency injection;
 * JSON dependency for more convenient JSON parsing/composing;
 * I am also using a Google code style convention and a checkstyle plugin for code quality;
 
-You can see the workflow of the user request in the console when you run the app
-
 ---
 ## How to run
 
----
 1. Run the SQL script to set up the database with mock data (`src/main/resources/init_db.sql`);
 
 2. To set the server online, you have to run the main method in the `UserRequestListener` class (`src/main/java/org/yanosik/test/task/server/UserRequestListener.java`);
@@ -23,7 +23,6 @@ You can see the workflow of the user request in the console when you run the app
 ---
 ## Modifications and implemented features
 
----
 * database structure:
   * changed vehicles foreign key from `user_login` to `user_id`, because login is not a primary key, so it can not be referenced as a foreign key in a 3NF database
   * implemented a soft delete for entities
@@ -39,8 +38,6 @@ You can see the workflow of the user request in the console when you run the app
 * Serving multiple clients:
   * Each socket can handle multiple client requests, and for each client connection, 
     a separate thread is created to simultaneously serve multiple clients.
-
-
 
 ---
 Also, inside the code you can find quite a lot of comments on how the things work 
