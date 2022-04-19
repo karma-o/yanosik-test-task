@@ -40,6 +40,12 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- Used for dependency injection -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.18</version>
+        </dependency>
 
     </dependencies>
 

@@ -3,6 +3,11 @@
 ---
 main functionality was implemented according to the task description (`task_description/Task_PL.png`).
 
+Used dependencies:
+* Spring context for more convenient dependency injection;
+* JSON dependency for more convenient JSON parsing/composing;
+* I am also using a Google code style convention and a checkstyle plugin for code quality;
+
 You can see the workflow of the user request in the console when you run the app
 
 ---
@@ -32,6 +37,8 @@ After that you can run the client, which was implemented through the test class 
 * Serving multiple clients:
   * Each socket can handle multiple client requests, and for each client connection, 
     a separate thread is created to simultaneously serve multiple clients.
+
+
 
 ---
 Also, inside the code you can find quite a lot of comments on how the things work 

@@ -2,10 +2,12 @@ package org.yanosik.test.task.common.service.mapper.impl;
 
 import java.time.LocalDateTime;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 import org.yanosik.test.task.common.model.InsuranceOffer;
 import org.yanosik.test.task.common.model.dto.response.InsuranceOfferDto;
 import org.yanosik.test.task.common.service.mapper.ResponseDtoMapper;
 
+@Component
 public class InsuranceOfferDtoMapper
         implements ResponseDtoMapper<InsuranceOffer, InsuranceOfferDto> {
     @Override

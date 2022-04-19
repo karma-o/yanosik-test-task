@@ -1,10 +1,12 @@
 package org.yanosik.test.task.common.service.mapper.impl;
 
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 import org.yanosik.test.task.common.model.User;
 import org.yanosik.test.task.common.model.dto.request.UserRequestDto;
 import org.yanosik.test.task.common.service.mapper.RequestDtoMapper;
 
+@Component
 public class UserDtoMapper implements RequestDtoMapper<User, UserRequestDto> {
 
     @Override

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+import org.springframework.stereotype.Repository;
 import org.yanosik.test.task.common.model.InsuranceOffer;
 import org.yanosik.test.task.common.model.User;
 import org.yanosik.test.task.common.model.Vehicle;
@@ -34,8 +35,10 @@ import org.yanosik.test.task.server.util.ConnectionUtil;
  * such as soft delete in case something goes wrong.
  *
  */
+
+@Repository
 public class UserDaoImpl implements UserDao {
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private final VehicleService vehicleService;
 
     public UserDaoImpl(VehicleService vehicleService) {

@@ -1,6 +1,7 @@
 package org.yanosik.test.task.server.service.impl;
 
 import javax.security.sasl.AuthenticationException;
+import org.springframework.stereotype.Service;
 import org.yanosik.test.task.common.model.User;
 import org.yanosik.test.task.server.service.AuthenticationService;
 import org.yanosik.test.task.server.service.UserService;
@@ -9,12 +10,13 @@ import org.yanosik.test.task.server.service.UserService;
  * Provides authentication logic on some basic level.
  *
  * Also, this class needs a secure method of delivering a password to the server
- * and a hashing algorithm (like SHA-256)
+ * and a hashing algorithm (like SHA-256) or we can just use Spring security
  * to hash a password of the registering user, and to compare a password while logging in
  * But by doing that we also need to modify the database, DAO, DTO mappers and the Model.
  * The main logic would be pretty much the same.
  *
  */
+@Service
 public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserService userService;
 

@@ -6,11 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 import org.yanosik.test.task.common.model.InsuranceOffer;
 import org.yanosik.test.task.server.dao.InsuranceOfferDao;
 import org.yanosik.test.task.server.exception.DataProcessingException;
 import org.yanosik.test.task.server.util.ConnectionUtil;
 
+@Repository
 public class InsuranceOfferDaoImpl implements InsuranceOfferDao {
     @Override
     public List<InsuranceOffer> getByVehicleId(Long id) {

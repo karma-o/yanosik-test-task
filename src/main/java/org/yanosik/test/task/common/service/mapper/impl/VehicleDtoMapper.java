@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 import org.yanosik.test.task.common.model.Vehicle;
 import org.yanosik.test.task.common.model.dto.response.VehicleResponseDto;
 import org.yanosik.test.task.common.service.mapper.ResponseDtoMapper;
@@ -25,6 +26,8 @@ import org.yanosik.test.task.common.service.mapper.ResponseDtoMapper;
  *   4. From DTO to readable string for a personnel or user.
  *
  */
+
+@Component
 public class VehicleDtoMapper implements ResponseDtoMapper<Vehicle, VehicleResponseDto> {
     private final InsuranceOfferDtoMapper insuranceOfferDtoMapper;
 

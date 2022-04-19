@@ -1,9 +1,11 @@
 package org.yanosik.test.task.server.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.yanosik.test.task.common.model.User;
 import org.yanosik.test.task.server.dao.UserDao;
 import org.yanosik.test.task.server.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 

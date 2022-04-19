@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.yanosik.test.task.common.model.User;
 import org.yanosik.test.task.common.model.dto.request.UserRequestDto;
 import org.yanosik.test.task.common.service.mapper.impl.InsuranceOfferDtoMapper;
@@ -23,34 +26,20 @@ import org.yanosik.test.task.server.service.impl.InsuranceOfferServiceImpl;
 import org.yanosik.test.task.server.service.impl.UserServiceImpl;
 import org.yanosik.test.task.server.service.impl.VehicleServiceImpl;
 
+@Component()
+@Scope("prototype")
 public class RequestHandler extends Thread {
-    private static final UserDtoMapper userDtoMapper;
-    private static final AuthenticationService authenticationService;
-    private static final VehicleDtoMapper vehicleDtoMapper;
-    private final Socket clientSocket;
+    @Autowired
+    private UserDtoMapper userDtoMapper;
+    @Autowired
+    private AuthenticationService authenticationService;
+    @Autowired
+    private VehicleDtoMapper vehicleDtoMapper;
+    private  Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
 
-    // in the production we would use dependency injection for all of our services and DAOs
-    // e.g. Spring Framework, Guice, etc.
-    // but for simplicity we will use static initialization block.
-    // although it will create a lot of unnecessary objects for each Thread.
-    static {
-        userDtoMapper = new UserDtoMapper();
-        authenticationService = new AuthenticationServiceImpl(
-                new UserServiceImpl(
-                        new UserDaoImpl(
-                                new VehicleServiceImpl(
-                                        new VehicleDaoImpl(
-                                                new InsuranceOfferServiceImpl(
-                                                        new InsuranceOfferDaoImpl()
-                                                )
-                                        )
-                                )
-                        )
-                )
-        );
-        vehicleDtoMapper = new VehicleDtoMapper(new InsuranceOfferDtoMapper());
+    public RequestHandler() {
     }
 
     public RequestHandler(Socket socket) {
@@ -95,6 +84,11 @@ public class RequestHandler extends Thread {
         } catch (IOException e) {
             throw new RuntimeException("Error while reading/writing from/to client socket", e);
         }
+    }
+
+    public RequestHandler setClientSocket(Socket clientSocket) {
+        this.clientSocket = clientSocket;
+        return this;
     }
 
     public void close() throws IOException {
