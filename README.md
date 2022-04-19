@@ -14,7 +14,7 @@ You can see the workflow of the user request in the console when you run the app
 ## How to run
 
 ---
-1. Run the SQL script to set up the database with mock data;
+1. Run the SQL script to set up the database with mock data (`src/main/resources/init_db.sql`);
 
 2. To set the server online, you have to run the main method in the `UserRequestListener` class (`src/main/java/org/yanosik/test/task/server/UserRequestListener.java`);
 
