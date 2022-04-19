@@ -7,11 +7,13 @@ import org.yanosik.test.task.server.service.UserService;
 
 /**
  * Provides authentication logic on some basic level.
- * I would say that it is not a good idea to use this class in production,
- * Because it is not secure enough along with the password field itself.
- * Possible solution for that is to use some kind of hashing algorithm,
- * and NOT send the password via the network as a plain text in JSON object.
- * But for the sake of simplicity and keeping with the main task, I decided to use this class.
+ *
+ * Also, this class needs a secure method of delivering a password to the server
+ * and a hashing algorithm (like SHA-256)
+ * to hash a password of the registering user, and to compare a password while logging in
+ * But by doing that we also need to modify the database, DAO, DTO mappers and the Model.
+ * The main logic would be pretty much the same.
+ *
  */
 public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserService userService;

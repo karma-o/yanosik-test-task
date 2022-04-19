@@ -28,6 +28,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.28</version>
         </dependency>
+        <!-- Mostly used for parsing/composing data -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -38,11 +39,6 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.8.2</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.13.2.2</version>
         </dependency>
 
     </dependencies>

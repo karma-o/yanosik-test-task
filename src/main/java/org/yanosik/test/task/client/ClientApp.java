@@ -20,7 +20,7 @@ public class ClientApp {
     }
 
     public JSONObject sendMessage(UserRequestDto userRequestDto) throws IOException {
-        System.out.println("Sending message: " + userRequestDto.toString());
+        System.out.println("Sending data: " + userRequestDto.toString());
         out.println(new JSONObject(userRequestDto));
         System.out.println("Message sent successfully");
         JSONObject response = new JSONObject(in.readLine());

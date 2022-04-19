@@ -15,7 +15,9 @@ import org.yanosik.test.task.common.service.mapper.ResponseDtoMapper;
 /**
  * This class has a lot of different methods for mapping.
  *
- * I tried to sort of separate mapping into 3 layers:
+ * I tried to separate mapping into 3 layers,
+ * because I think it's better to have  a clear separation between the wrappers,
+ * and we may use them in different combinations later on
  *   1. From JSON(which is a standard format for sending data through the internet)
  *      to DTO(which is just a wrapper for the model,
  *      used to unify the response in case we will add more fields to our model later)
@@ -28,6 +30,20 @@ public class VehicleDtoMapper implements ResponseDtoMapper<Vehicle, VehicleRespo
 
     public VehicleDtoMapper(InsuranceOfferDtoMapper insuranceOfferDtoMapper) {
         this.insuranceOfferDtoMapper = insuranceOfferDtoMapper;
+    }
+
+    public Vehicle toModel(VehicleResponseDto dto) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.setId(dto.getId());
+        vehicle.setBrand(dto.getBrand());
+        vehicle.setModel(dto.getModel());
+        vehicle.setInsertTime(dto.getInsertTime());
+        vehicle.setInsuranceOffers(
+                dto.getInsuranceOffers()
+                        .stream()
+                        .map(insuranceOfferDtoMapper::toModel)
+                        .collect(Collectors.toList()));
+        return vehicle;
     }
 
     @Override
@@ -54,9 +70,9 @@ public class VehicleDtoMapper implements ResponseDtoMapper<Vehicle, VehicleRespo
         JSONArray jsonArray = vehicleJson.getJSONArray("insuranceOffers");
         dto.setInsuranceOffers(
                 IntStream.range(0, jsonArray.length())
-                .mapToObj(jsonArray::getJSONObject)
-                .map(insuranceOfferDtoMapper::toResponseDto)
-                .collect(Collectors.toList()));
+                        .mapToObj(jsonArray::getJSONObject)
+                        .map(insuranceOfferDtoMapper::toResponseDto)
+                        .collect(Collectors.toList()));
         return dto;
     }
 
@@ -73,20 +89,6 @@ public class VehicleDtoMapper implements ResponseDtoMapper<Vehicle, VehicleRespo
         JSONObject result = new JSONObject(map);
         result.put("insuranceOffers", new JSONArray(insuranceOffersJson));
         return result;
-    }
-
-    public Vehicle toModel(VehicleResponseDto dto) {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setId(dto.getId());
-        vehicle.setBrand(dto.getBrand());
-        vehicle.setModel(dto.getModel());
-        vehicle.setInsertTime(dto.getInsertTime());
-        vehicle.setInsuranceOffers(
-                dto.getInsuranceOffers()
-                .stream()
-                .map(insuranceOfferDtoMapper::toModel)
-                .collect(Collectors.toList()));
-        return vehicle;
     }
 
     public String responseToReadableString(JSONObject serverResponse) {

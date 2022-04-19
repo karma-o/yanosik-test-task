@@ -8,6 +8,11 @@ public class User {
     private Long id;
     private String nick;
     private String login;
+    // in production, we would never store a password in plain text
+    // we would use a hash function to store the password in a secure way (e.g. bcrypt).
+    // Also we would need another field to store the salt,
+    // and we would have to rewrite half of the code on the dao layer.
+    // so left it as it is for simplicity.
     private String password;
     private LocalDateTime insertTime;
     //I assumed we have OneToMany Relationship here based on the task description

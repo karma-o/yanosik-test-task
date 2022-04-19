@@ -16,7 +16,6 @@ public class UserDtoMapper implements RequestDtoMapper<User, UserRequestDto> {
     }
 
     public UserRequestDto toRequestDto(JSONObject json) {
-        System.out.println("Request received: " + json.toString());
         System.out.println("Mapping request to DTO... ");
         // json example: {"id":1, "password":"qwerty123"}
         UserRequestDto userRequestDto = new UserRequestDto();
